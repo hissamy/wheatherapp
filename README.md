@@ -55,8 +55,9 @@ npm run test
 * Jest + Enzyme
 
 ### Future Enhancement
-
+```
 * Adding map for user to select location
 * Adding past selected locations
 * Auto select User's current location
 * Adding polling/push for live wheather changes
+```
