@@ -1,0 +1,343 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+hr {
+  border: 2px solid #666;
+}
+
+body {
+  background: #121213;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.loading {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinner {
+    background: url('/loader.gif') no-repeat;
+    background-size: 100%;
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.weather-forecast-wrapper {
+  margin: 0 auto;
+  width: 40%;
+
+  @media only screen and (max-width: 64em) {
+    width: 60%;
+  }
+
+  @media only screen and (max-width: 48em) {
+    width: 100%;
+  }
+
+  header {
+    text-align: center;
+
+    .heading {
+      font-size: 22px;
+      padding: 25px 0 0 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .weather-dashboard {
+    text-align: center;
+
+    .error {
+      display: none;
+    }
+
+    section.controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+
+      input {
+        font-size: 13px;
+        padding: 10px;
+        display: inline-block;
+        background: #283593;
+        border: none;
+        color: #fff;
+        width: 230px;
+        text-transform: uppercase;
+
+        &::placeholder {
+          color: #fff;
+        }
+
+        &:focus {
+          &::placeholder {
+            color: transparent;
+          }
+        }
+
+        &.search {
+          width: 30px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &.invalid-city {
+      section.controls {
+        input {
+          background: #ff1744;
+        }
+      }
+
+      .error {
+        display: block;
+        color: #ff1744;
+        padding: 0 0 30px 0;
+      }
+    }
+  }
+
+  .forecast-tiles {
+    width: 100%;
+
+    .forecast-tile {
+      min-height: 100px;
+      background: #121213;
+      margin: 3px;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+
+      :after {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 10px;
+        top: 48px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #fff;
+      }
+
+      .icon {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #283593;
+        flex-direction: column;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+
+      .weather-info {
+        padding: 0 0 0 15px;
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+        justify-content: center;
+
+        .min-max {
+          padding: 10px 10px;
+          font-size: 20px;
+          color: #c7cef5;
+
+          strong {
+            font-weight: bold;
+            color: #fff;
+          }
+        }
+
+        .more-info {
+          padding: 0 10px;
+          font-size: 12px;
+        }
+      }
+
+      .primary-info {
+        display: flex;
+      }
+
+      &.collapsed {
+        .detailed-info {
+          height: 0;
+        }
+      }
+
+      &.expanded {
+        .detailed-info {
+          height: 100px;
+        }
+
+        :after {
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 5px solid #fff;
+          border-top: none;
+        }
+      }
+
+      .detailed-info {
+        width: 100%;
+        height: 0;
+        -webkit-transition: height 0.20s ease-in;
+        -moz-transition: height 0.20s ease-in;
+        -o-transition: height 0.20s ease-in;
+        transition: height 0.20s ease-in;
+        background: #283593;
+
+        .hourly {
+          display: flex;
+          padding: 25px 0 20px 10px;
+
+          .hourly-info {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            align-items: center;
+            justify-content: center;
+            overflow-x: scroll;
+
+            .hour-temperature {
+              font-size: 16px;
+              font-weight: bold;
+            }
+
+            .hour-of-the-day {
+              font-weight: normal;
+              font-size: 12px;
+              color: #c5cae9;
+            }
+
+            div {
+              padding: 5px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.fork {
+  margin: 30px;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+.widget {
+  border: 6px solid hsla(0,0%,100%,.1);
+  box-shadow: 1px 1px 15px rgba(0,0,0,.2);
+  display: block;
+  width: 400px;
+  margin: 0 auto;
+}
+
+/*Grid for weather entries*/
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+}
+/*clearfix*/
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.widget:hover {
+  box-shadow: 1px 1px 15px rgba(0,0,0,.5);
+}
+.container {
+  background: radial-gradient(50% 50%,hsla(0,0%,100%,.5),#003663);
+  background-color: #003663;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 20px;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  .widget {
+      width: 98%;
+  
+  }  }
