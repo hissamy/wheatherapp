@@ -10,8 +10,8 @@ A simple application to display 5-day weather forecast using the OpenWeatherMap 
 
 ## Run
 ```
-git clone
-cd react-weather-forecast
+git clone https://github.com/hissamy/wheatherapp.git
+cd wheatherapp
 npm i
 ```
 
