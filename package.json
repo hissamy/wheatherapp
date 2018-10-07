@@ -52,6 +52,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
+    "heroku-postbuild": "webpack -p",// runs after installation,
     "build": "webpack",
     "watch": "webpack --watch",
     "lint": "./node_modules/.bin/eslint ./src",
