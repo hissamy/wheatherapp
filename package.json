@@ -4,9 +4,7 @@
   "description": "webpack init",
   "watch": true,
   "dependencies": {
-    "moment": "^2.22.2"
-  },
-  "devDependencies": {
+    "moment": "^2.22.2",
     "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -57,7 +55,8 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "lint": "./node_modules/.bin/eslint ./src",
-    "test": "jest"
+    "test": "jest",
+    "run": "node src/index.js"
   },
   "jest": {
     "setupFiles": [
