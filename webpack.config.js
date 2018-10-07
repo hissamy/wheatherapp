@@ -3,12 +3,13 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
+  
   entry: ["./src/index.js", "./src/styles/main.scss"],
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./public/dist")
   },
-  devtool: 'inline-source-map',
+  
   module: {
     rules: [
       {
@@ -26,11 +27,7 @@ module.exports = {
         loaders: "babel-loader"
       }
     ]
-  },
-  devServer: {
-    contentBase: "./public/",
-    watchContentBase: true
-  },
+  },  
   plugins: [
      new ExtractTextPlugin("bundle.css"),
     new webpack.DefinePlugin({
