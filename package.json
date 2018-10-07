@@ -51,7 +51,7 @@
     "webpack-dev-server": "^2.11.2"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --port 5000",
     "heroku-postbuild": "webpack -p",
     "build": "webpack",
     "watch": "webpack --watch",
