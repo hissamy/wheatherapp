@@ -10,8 +10,8 @@ A simple application to display 5-day weather forecast using the OpenWeatherMap 
 
 ## Run
 ```
-git clone
-cd react-weather-forecast
+git clone https://github.com/hissamy/wheatherapp.git
+cd wheatherapp
 npm i
 ```
 
@@ -54,4 +54,10 @@ npm run test
 * JavaScript (ES6)
 * Jest + Enzyme
 
-
+### Future Enhancement
+```
+* Adding map for user to select location
+* Adding past selected locations
+* Auto select User's current location
+* Adding polling/push for live wheather changes
+```
